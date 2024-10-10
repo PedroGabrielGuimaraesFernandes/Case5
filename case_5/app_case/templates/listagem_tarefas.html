@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minhas Tarefas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Prazo</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarefa in tarefas %}
+            <form method="POST"> {% csrf_token %}
+            <tr>
+                <td>{{ tarefa.titulo }}</td>
+                <td>{{ tarefa.descricao }}</td>
+                <td>{{ tarefa.prazo }}</td>
+                <td>{{ tarefa.status}}</td>
+                <td>
+                    <button><a href="{% url 'editar_tarefa' tarefa.id %}">Editar</a></button>
+                    <button><a href="{% url 'deletar_tarefa' %}"> Deletar</button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma tarefa encontrada.</td>
+            </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="cadastro_tarefas.html">Adicionar Nova Tarefa</a>
+</body>
+{% endblock %}

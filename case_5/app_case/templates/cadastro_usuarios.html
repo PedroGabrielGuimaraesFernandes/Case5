@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/style.css" />
+
+</head>
+<body class="bodylog">
+<h1 style = "color: #fcfdfe;">Cadastro</h1>
+    
+    <div class="tarefas" style ="padding-top: 80px;">
+        <div class="quadro">
+            <form method="POST">
+                {% csrf_token %}
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="username">Username:</label>
+                <input type="username" id="username" name="username" required>
+                <br>
+                <label for="password1">Senha:</label>
+                <input type="password" id="password1" name="password1" required>
+                <br>
+                <label for="password2">Confirme a Senha:</label>
+                <input type="password" id="password2" name="password2" required>
+                <br>
+                <button type="submit" class ="botao">Cadastrar</button>
+            </form>
+        <p class="p_log_quadro">Já tem uma conta? <a href="login.html">Faça login</a></p>
+    </div>
+    </div>
+</body>
+
+<footer>
+    <p class="rights.log"> 2024 - Instituto Presbiteriano Mackenzie - E conhecereis a verdade, e a verdade vos libertará. João 8:32</p>
+  </footer>
+</html>

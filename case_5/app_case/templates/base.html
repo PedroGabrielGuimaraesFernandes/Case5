@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+	<link rel="stylesheet" href="{% static 'style.css' %}" />
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'cadastro_tarefas' %}">Cadastro Tarefas</a></li>
+            <li><a href="{% url 'listagem_tarefas'%}">Listagem Tarefas</a></li> 
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    {% block conteudo %}
+    {% endblock conteudo %}
+
+
+    <footer>
+        <p class="rights"> 2024 - Instituto Presbiteriano Mackenzie - E conhecereis a verdade, e a verdade vos libertará. João 8:32</p>
+    </footer>
+    </html>

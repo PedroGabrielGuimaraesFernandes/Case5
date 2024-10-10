@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <h1  style = "color: #323692;">Editar Tarefa</h1>
+    <div class="tarefas">
+      <div class="quadro_tarefas">
+        <form method="POST" action="{% url 'editar_tarefa' tarefa.id %}">
+          {% csrf_token %}
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" value="{{ tarefa.titulo }}" required>
+          <br>
+          <label for="materia">Matéria:</label>
+          <textarea id="text" name="materia" value="{{ tarefa.materia }}" required></textarea>
+          <br>
+          <label for="descricao">Descrição:</label>
+          <textarea id="descricao" name="descricao" value="{{ tarefa.descricao }}" required></textarea>
+          <br>
+          <label for="prazo">Prazo:</label>
+          <input type="date" id="prazo" name="prazo" value="{{ tarefa.prazo }}" required>
+          <br>
+          <label for="status">Status:</label>
+          <input type="text" id="status" name="status" value="{{ tarefa.status }}">
+          <br>
+          <button type="submit" class ="botao">Salvar Edição de Tarefa</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+{% endblock%}
