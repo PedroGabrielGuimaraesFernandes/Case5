@@ -21,6 +21,11 @@ def cadastro_usuarios(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
 
+        if password1 != password2:
+            return HttpResponse("As senhas não batem")
+        email_repetido = User.objects.filter(email=email)
+        if email_repetido:
+            return HttpResponse("O email já esta cadastrado")
         if email and username and password1 and password2:
             user = User.objects.create_user(username=username, email=email, password=password1)
             print(f'Usuário {user.username} criado com sucesso!')  
@@ -115,7 +120,7 @@ def login_usuario(request):
         email = request.POST.get('email')
         senha = request.POST.get('password')
         
-        user = User.objects.filter(email=email).get()
+        user = User.objects.filter(email=email).first()
         
         print (user.username)
         print (senha)
