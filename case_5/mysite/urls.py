@@ -19,10 +19,13 @@ from django.urls import include, path
 from app_case import views
 
 urlpatterns = [
-    path("app_case/", include("app_case.urls")),
+    path("", include("app_case.urls")),
     path('admin/', admin.site.urls),
-    path("", views.home, name="home"),
-    path("cadastro_usuarios", views.cadastro_usuarios, name="cadastro_usuarios"),
+    path('', views.login_usuario, name="login"),
+    path('login', views.login_usuario, name="login"),
+    path("logout/", views.logout_usuario, name="logout"),
+    path("home/", views.home, name="home"),
+    path("cadastro_usuarios/", views.cadastro_usuarios, name="cadastro_usuarios"),
     
     path("cadastro_tarefas/", views.cadastro_tarefas, name="cadastro_tarefas"),
     
@@ -33,10 +36,4 @@ urlpatterns = [
     path("editar_tarefas/<int:tarefa_id>/", views.editar_tarefa, name="editar_tarefa"),
     
     path("deletar_tarefa/<int:tarefa_id>/", views.deletar_tarefa, name="deletar_tarefa"),
-    
-    path("specifics/<int:question_id>/", views.detail, name="detail"),
-    # ex: /polls/5/results/
-    path("<int:question_id>/results/", views.results, name="results"),
-    # ex: /polls/5/vote/
-    path("<int:question_id>/vote/", views.vote, name="vote"),
 ]

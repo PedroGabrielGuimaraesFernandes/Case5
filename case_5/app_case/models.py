@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Tarefa(models.Model):
@@ -7,7 +8,7 @@ class Tarefa(models.Model):
     descricao = models.CharField(max_length=100)
     prazo = models.DateField()
     status = models.CharField(max_length=100)
-
+    usuario= models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
 
 class Question(models.Model):

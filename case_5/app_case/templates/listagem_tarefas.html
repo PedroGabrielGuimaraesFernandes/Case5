@@ -21,6 +21,7 @@
         <thead>
             <tr>
                 <th>Título</th>
+                <th>Materia</th>
                 <th>Descrição</th>
                 <th>Prazo</th>
                 <th>Status</th>
@@ -32,22 +33,23 @@
             <form method="POST"> {% csrf_token %}
             <tr>
                 <td>{{ tarefa.titulo }}</td>
+                <td>{{ tarefa.materia }}</td>
                 <td>{{ tarefa.descricao }}</td>
                 <td>{{ tarefa.prazo }}</td>
                 <td>{{ tarefa.status}}</td>
                 <td>
                     <button><a href="{% url 'editar_tarefa' tarefa.id %}">Editar</a></button>
-                    <button><a href="{% url 'deletar_tarefa' %}"> Deletar</button>
+                    <button><a href="{% url 'deletar_tarefa' tarefa.id %}"> Deletar</button>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5">Nenhuma tarefa encontrada.</td>
+                <td colspan="6">Nenhuma tarefa encontrada.</td>
             </tr>
             </form>
             {% endfor %}
         </tbody>
     </table>
-    <a href="cadastro_tarefas.html">Adicionar Nova Tarefa</a>
+    <button type="submit" class ="botao"><a style="text-decoration: none; color: inherit;" href="{% url 'cadastro_tarefas' %}">Adicionar Nova Tarefa</a></button>
 </body>
 {% endblock %}

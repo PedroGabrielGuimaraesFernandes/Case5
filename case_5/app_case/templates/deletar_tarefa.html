@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    <h1 style = "color: #fcfdfe;">Deletar</h1>
+    <div class="tarefas">
+        <div class="quadro">
+            <form action="{% url 'deletar_tarefa'   tarefa.id%}" method="POST">
+                {% csrf_token %}
+                <label for="delete">Você realmente quer deletar a tarefa "{{tarefa.titulo}}"</label>
+                <div>
+                <button type="submit" class ="botao"><a style="text-decoration: none; color: inherit;" >Deletar</a></button>
+                <button type="submit" class ="botao"><a style="text-decoration: none; color: inherit;" href="{% url 'listagem_tarefas'%}">Cancelar</a></button>
+                </div>
+            </form>
+        </div>
+        <div>
+            
+        </div>
+{% endblock%}
